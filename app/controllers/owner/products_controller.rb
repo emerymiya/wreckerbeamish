@@ -1,5 +1,6 @@
 class Owner::ProductsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_authorized_for_current_product, only: [:show]
   
   def new
     @product = Product.new
@@ -19,6 +20,17 @@ class Owner::ProductsController < ApplicationController
   end
 
   private
+
+  def require_authorized_for_current_product
+    if current_product.user != current_user
+      render plain: "Unauthorized", status: :unauthorized
+    end
+  end
+
+  helper_method :current_product
+  def current_product
+    @current_product ||= Product.find(params[:id])
+  end
 
   def course_params
     params.require(:product).permit(:title, :description, :cost)
