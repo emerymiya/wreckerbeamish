@@ -1,0 +1,21 @@
+<br />
+
+<div class="booyah-box col-10 offset-1">
+  <h1 class="text-center">Buy the Thing</h1>
+  <hr />
+   <% @products.each do |product| %>
+        <h2 class="text-center">
+      <%= link_to product.title, product_path(product) %>
+    </h2>
+    <br />
+    <div class="row">
+      <div class="col-sm-8 col-12">
+        <%= product.description %>
+      </div>
+      <div class="col-sm-4 col-12 text-center">
+        <%= link_to 'More Details', product_path(product), class: 'btn btn-outline-primary btn-large' %>
+      </div>
+    </div>
+    <br class="clr" />
+  <% end %>
+</div>

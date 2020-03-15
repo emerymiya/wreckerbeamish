@@ -1,0 +1,23 @@
+<br />
+
+<div class="booyah-box col-10 offset-1">
+  <h1><%= @product.title %></h1>
+  <br />
+  <div class="row">
+    <div class="col-sm-4 col-12 text-center">
+      <span class="badge badge-default">
+      <%= number_to_currency @product.cost %>
+      </span>
+
+      <% if current_user && current_user == @product.user %>
+        <br />
+        <br />
+        <%= link_to 'Owner', owner_product_path(@product), class: 'btn btn-outline-danger btn-large' %>
+      <% end %>
+    </div>
+
+    <div class="col-sm-8 col-12">
+      <%= @product.description %>
+    </div>
+  </div>
+</div>
