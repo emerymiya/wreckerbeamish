@@ -8,6 +8,8 @@
       <%= link_to product.title, product_path(product) %>
     </h2>
     <br />
+    <%= image_tag product.image.url, class: 'img-fluid' if product.image? %>
+    <br />
     <div class="row">
       <div class="col-sm-8 col-12">
         <%= product.description %>

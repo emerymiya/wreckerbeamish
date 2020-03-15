@@ -7,7 +7,7 @@ class Owner::ProductsController < ApplicationController
   end
 
   def create
-    @product = current_user.products.create(course_params)
+    @product = current_user.products.create(product_params)
     if @product.valid?
       redirect_to owner_product_path(@product)
     else
@@ -32,7 +32,7 @@ class Owner::ProductsController < ApplicationController
     @current_product ||= Product.find(params[:id])
   end
 
-  def course_params
-    params.require(:product).permit(:title, :description, :cost)
+  def product_params
+    params.require(:product).permit(:title, :description, :cost, :image)
   end
 end
