@@ -1,7 +1,8 @@
 <br />
 
 <div class="booyah-box col-10 offset-1">
-  <h1 class="text-center"><%= @product.title %></h1>
+  <h1 class="text-center">
+  <%= @product.title %></h1>
   <br />
   <%= image_tag @product.image_url, class: 'img-fluid' %>
   <br />
@@ -32,6 +33,7 @@
         <% else %>
           <h3 class="badge badge-info">Sign In to Purchase!</h3>
       <% end %>
+    
  
 
       <% if current_user && current_user == @product.user %>

@@ -20,17 +20,20 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 mt-md-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Photography Packages</a>
+              <%= link_to 'Photography Packages', packages_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
               <%= link_to 'Products', products_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Community</a>
+              <%= link_to 'Community', community_path, class: 'nav-link' %>
             </li>
           </ul>
           <ul class="navbar-nav">
             <% if user_signed_in? %>
+             <li class="nav-item">
+              <%= link_to 'My Dashboard', dashboard_path, class: 'nav-link' %>
+             </li>
               <li class="nav-item">
                 <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
               </li>
@@ -62,9 +65,43 @@
 
     <div id="footer">
       <div class="container">
-        <b>Products</b>
+       <div class="row">
+      <div class="col-12 col-sm-3">
+        <b>Shop Owners</b>
         <br />
-        <%= link_to 'Sell Your Stuff', new_owner_product_path %>
+        <%= link_to 'Sell your Stuff!', new_owner_product_path %>
+        <br />
+        <%= link_to 'My Dashboard', dashboard_path %>
+      </div>
+      <div class="col-12 col-sm-3">
+        <b>More Links</b>
+        <br />
+        <%= link_to 'Behind the Lens', contact_path %>
+        <br />
+        <%= link_to 'Community', community_path %>
+        <br />
+        <%= link_to 'Privacy Policy', privacy_path %> 
+      </div>
+      <div class="col-12 col-sm-3">
+        <b>Contact</b>
+        <br />
+        WreckerBeamish@email.com
+        <br />
+        Somewhere
+        <br />
+        Austin, TX 78746
+      </div>
+      <div class="col-12 col-sm-3 social">
+        <b>Social</b>
+        <br />
+        <br />
+        <%= link_to 'http://github.com/emerymiya' do %>
+          <span class="fa fa-github-square fa-2x social-button"></span>
+        <% end %>
+        <span class="fa fa-facebook-square fa-2x social-button"></span>
+        <span class="fa fa-twitter-square fa-2x social-button"></span>
+      </div>
+    </div>
       </div>
     </div>
   </body>

@@ -1,0 +1,14 @@
+<br />
+
+<div class="booyah-box col-10 offset-1">
+  <h1 class="text-center">Purchase History</h1>
+ <hr />
+  <% current_user.enrolled_products.each do |product| %>
+    <h3 class="text-center">
+    <%= link_to product.title, product_path(product) %>
+    </h3>
+
+    <%= image_tag product.image.url, class: 'img-fluid' %>
+     <%= product.description %>
+  <% end %>
+  </div>
