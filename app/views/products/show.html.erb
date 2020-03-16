@@ -11,6 +11,29 @@
       <%= number_to_currency @product.cost %>
       </span>
 
+      <br />
+      <br />
+
+       <% if current_user %>
+       <% if current_user.enrolled_in?(@product) %>
+        <h3 class="badge badge-info">Thank you for your purchase!</h3>
+      <% else %>
+        <%= link_to 'Buy Now', product_enrollments_path(@product), class: 'btn btn-outline-primary', method: :post %>
+        <%= form_tag product_enrollments_path(@product) do %>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-email="<%= current_user.email %>"
+                  data-description="<%= @product.title %> (<%= number_to_currency @product.cost %>)"
+                  data-amount="<%= (@product.cost * 100).to_i %>"
+                  data-locale="auto"></script>
+        <% end %>
+        <% end %>
+        <% else %>
+          <h3 class="badge badge-info">Sign In to Purchase!</h3>
+      <% end %>
+ 
+
       <% if current_user && current_user == @product.user %>
         <br />
         <br />
@@ -18,6 +41,7 @@
       <% end %>
     </div>
 
+     
     <div class="col-sm-8 col-12">
       <%= @product.description %>
     </div>
